@@ -128,7 +128,14 @@ class BinarySearchTree {
 }
 
 const findHeightOfTree = (tree) => {
-  
+  /*
+  traverse left; traverse right
+  count each level
+  remember level starts at 0
+  whereas height starts with 1
+  key === null (base case) - if this left equal null; if right equal null = we are at bottom of recursive; return up
+  each time we return; we count
+  */
 
 }
 
