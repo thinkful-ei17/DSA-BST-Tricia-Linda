@@ -122,21 +122,17 @@ class BinarySearchTree {
 
 	_findMin(){
 		if (!this.left) {
-			console.log('left-node', this.left);
+
 			return this;
 		}
-		console.log('left node', this.left);
 		return this.left._findMin();
-    
 	}
 
 	_findMax(){ 
 		if (!this.right) {
-			console.log('right-node', this.right);
 			return this;
 		}
-		console.log('right node', this.right);
- 		return this.right._findMax();
+		return this.right._findMax();
 	}	
 }
 
@@ -178,11 +174,13 @@ function isBST(tree){
 		throw new Error('isBST:  Not a binary tree');
 	}
 	if ((tree._findMin()).key < tree.key){
-		isBST = true;
+ 		isBST = true;
 	}
 	if ((tree._findMax()).key > tree.key){
 		isBST = true;
 	}
+	console.log('minimum key = ', tree._findMin().key);
+	console.log('maximum key', tree._findMax().key);
 	return isBST;
 }
 
