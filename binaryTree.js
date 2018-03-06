@@ -2,6 +2,7 @@
 
 let countRight = 0;
 let countLeft = 0;
+let count = 0;
 
 class BinarySearchTree {
 	constructor(key=null, value=null, parent=null) {
@@ -120,19 +121,19 @@ class BinarySearchTree {
 		}
 	}
 
-	_findMin(){
-		if (!this.left) {
+	_findMin(position=0){
+		if (!this.left || position === 0) {
 
 			return this;
-		}
-		return this.left._findMin();
+    }
+		return this.left._findMin((position--));
 	}
 
-	_findMax(){ 
-		if (!this.right) {
+	_findMax(position=0) { 
+		if (!this.right || position === 0) {
 			return this;
-		}
-		return this.right._findMax();
+    }
+		return this.right._findMax((position--));
 	}	
 }
 
@@ -184,6 +185,15 @@ function isBST(tree){
 	return isBST;
 }
 
+function findKeyAtPosition(tree, position) {
+  console.log('start',position);
+  if(tree.key === null) {
+    throw new Error('findKeyAtPosition: Tree is empty');
+  }	
+  console.log('end', position);
+  return (tree._findMax(position)).key;
+}
+
 const main = () => {
 	const tree = new BinarySearchTree();
 	tree.insert(3, 'a');
@@ -202,7 +212,8 @@ const main = () => {
 	//console.log(tree);
 	// console.log(findHeightOfTree(tree));
 	console.log('----------------------------');
-	console.log(isBST(tree));
+  //console.log(isBST(tree));
+  console.log(findKeyAtPosition(tree, 3));
 };
 
 main();
