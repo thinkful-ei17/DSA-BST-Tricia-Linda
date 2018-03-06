@@ -135,8 +135,21 @@ const findHeightOfTree = (tree) => {
   whereas height starts with 1
   key === null (base case) - if this left equal null; if right equal null = we are at bottom of recursive; return up
   each time we return; we count
+  Our example - exepcted results: height of 5; level of 4
   */
 
+  //base case
+  if(!tree) {
+    return 0;
+  }
+
+  const rightHeight = 1 + findHeightOfTree(tree.right);
+  console.log('on right', rightHeight);
+  const leftHeight = 1 + findHeightOfTree(tree.left);
+  console.log('on left', leftHeight);
+
+  return rightHeight > leftHeight ? rightHeight : leftHeight;
+  //if right side height is greater than left; return right height else return left height
 }
 
 const main = () => {
@@ -153,9 +166,9 @@ const main = () => {
   //console.log(tree.find(3));
   //console.log(tree.find(1));
   //console.log(tree.find(4));
-  tree.remove(3);
-  console.log(tree);
-  //findHeightOfTree(tree);
+  //tree.remove(3);
+  //console.log(tree);
+  findHeightOfTree(tree);
 }
 
 main();
