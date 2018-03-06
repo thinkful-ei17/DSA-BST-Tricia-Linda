@@ -168,7 +168,7 @@ const main = () => {
   //console.log(tree.find(4));
   //tree.remove(3);
   //console.log(tree);
-  findHeightOfTree(tree);
+  console.log(findHeightOfTree(tree));
 }
 
 main();
